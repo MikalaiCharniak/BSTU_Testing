@@ -33,7 +33,7 @@ namespace Tests
         //using attributes for testing many differents triangles
         [TestCase(2, 2, 4, ExpectedResult = false)]
         [TestCase(10, 8, 6, ExpectedResult = true)]
-        [TestCase(90, 20, 30, ExpectedResult = false)]
+        [TestCase(90, 20, 30, ExpectedResult = true)]
         [TestCase(1, 2, 3, ExpectedResult = false)]
         [TestCase(100, 1, 1, ExpectedResult = false)]
         [TestCase(30, 40, 50, ExpectedResult = true)]
