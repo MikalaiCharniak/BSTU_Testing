@@ -1,12 +1,12 @@
-﻿using OpenQA.Selenium;
-
+﻿using _5element.PageObject.Test.Abstractions;
+using OpenQA.Selenium;
+using System.Threading;
 
 namespace _5element.PageObject.Test.PageObjects
 {
-    public class HomePage
+    public class HomePage : Page
     {
         public const string pageUrl = "https://5element.by/";
-        private readonly IWebDriver _driver;
         public HomePage(IWebDriver driver)
         {
             _driver = driver;
@@ -16,6 +16,6 @@ namespace _5element.PageObject.Test.PageObjects
             new LaptopSectionPage(_driver, pageUrl);
 
         public void GoToPage() => 
-            _driver.Navigate().GoToUrl(pageUrl);             
+            _driver.Navigate().GoToUrl(pageUrl);      
     }
 }

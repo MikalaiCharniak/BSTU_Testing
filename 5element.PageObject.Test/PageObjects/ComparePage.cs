@@ -1,12 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using _5element.PageObject.Test.Abstractions;
+using OpenQA.Selenium;
 
 namespace _5element.PageObject.Test.PageObjects
 {
-    public class ComparePage
+    public class ComparePage : Page
     {
         private const string linkByXPath = ".//a[@href='/compare']";
-        private readonly IWebDriver _driver;
-        private const string compareProductsArrayByXPath = ".//div[@class='product-item product-item-shortblock item js-product-item']";
+        private const string compareProductsArrayByXPath =
+            ".//div[@class='product-item product-item-shortblock item js-product-item']";
 
         public ComparePage(IWebDriver driver)
         {

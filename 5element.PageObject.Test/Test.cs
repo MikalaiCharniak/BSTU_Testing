@@ -10,10 +10,12 @@ namespace _5element.PageObject.Test
     {
         private IWebDriver _driver;
         private int exptectedProductForCompare;
+        private string searchVariable;
         [SetUp]
         public void StartBrowser()
         {
             exptectedProductForCompare = 2;
+            searchVariable = "ноутбуки";
             _driver = new ChromeDriver("D:\\Univer\\4course_1sem\\SoftwareTesting\\Selenium_Drivers");
             _driver.Manage().Window.Maximize();
         }
@@ -31,6 +33,17 @@ namespace _5element.PageObject.Test
             Thread.Sleep(1000);
             var result = compareWindow.CheckNumberOfComporasionProducts(exptectedProductForCompare);
             Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void CheckSearchFunction()
+        {
+            var homePage = new HomePage(_driver);
+            homePage.GoToPage();
+            homePage.WriteSearchQuery(searchVariable);
+            var isSearchResultExist = SearchPanel.IsNotZeroResults(_driver)
+                && !SearchPanel.IsNoResults(_driver);
+            Assert.IsTrue(isSearchResultExist);
         }
     }
 }

@@ -6,7 +6,6 @@ namespace _5element.PageObject.Test.PageObjects
 {
     public class LaptopSectionPage : Page
     {
-        private readonly IWebDriver _driver;
         private const string _addToCompareButtonsXPath = ".//div[@title='В сравнение']";
         private const string _compareWindowXPath = ".//a[@class='js-bottom-compare']";
         private IWebElement _compareWindow;
