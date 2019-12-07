@@ -2,6 +2,7 @@ using _5element.PageObject.Test.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.IO;
 using System.Threading;
 
 namespace _5element.PageObject.Test
@@ -15,7 +16,7 @@ namespace _5element.PageObject.Test
         public void StartBrowser()
         {
             exptectedProductForCompare = 2;
-            searchVariable = "ноутбуки";
+            searchVariable = "????????";
             _driver = new ChromeDriver("D:\\Univer\\4course_1sem\\SoftwareTesting\\Selenium_Drivers");
             _driver.Manage().Window.Maximize();
         }
@@ -23,6 +24,7 @@ namespace _5element.PageObject.Test
         [Test]
         public void CheckComparisonProduct()
         {
+            TestContext.AddTestAttachment(Path.GetTempFileName());
             var homePage = new HomePage(_driver);
             homePage.GoToPage();
             var laptopSectionPage = homePage.GoToLaptopSectionPage();
@@ -33,6 +35,7 @@ namespace _5element.PageObject.Test
             Thread.Sleep(1000);
             var result = compareWindow.CheckNumberOfComporasionProducts(exptectedProductForCompare);
             Assert.IsTrue(result);
+            TestContext.AddTestAttachment(Path.GetTempFileName());
         }
 
         [Test]

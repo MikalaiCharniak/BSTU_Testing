@@ -1,3 +1,8 @@
-{
-  "chrome" : ""
+﻿{
+  "CheckComparisonProduct": {
+    "exptectedProductForCompare": 2
+  },
+  "CheckSearchFunction": {
+    "searchVariable": "ноутбуки"
+  }
 }

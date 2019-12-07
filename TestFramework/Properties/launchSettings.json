@@ -2,7 +2,7 @@
   "profiles": {
     "TestFramework": {
       "commandName": "Project",
-      "commandLineArgs": "firefox"
+      "commandLineArgs": "chrome dev"
     }
   }
 }

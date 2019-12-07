@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
-using System.Threading;
 using TestFramework.Core.Abstractions;
+using TestFramework.Areas._5element.Infrastructure;
 
 namespace TestFramework.Areas._5element.Pages
 {
@@ -9,14 +9,13 @@ namespace TestFramework.Areas._5element.Pages
         public HomePage(IWebDriver driver)
         {
             _driver = driver;
+            PageUrl = Paths.HomePageURL;
         }
 
-        public void TestBrowser()
-        {
-            _driver.Manage().Window.Maximize();
-            _driver.Url = "https://5element.by/";
-            Thread.Sleep(1000);
-            _driver.Quit();
-        }
+        public LaptopSectionPage GoToLaptopSectionPage() =>
+    new LaptopSectionPage(_driver, PageUrl);
+
+        public void GoToPage() =>
+            _driver.Navigate().GoToUrl(PageUrl);
     }
 }
