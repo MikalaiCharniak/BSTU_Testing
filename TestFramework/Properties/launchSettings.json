@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "TestFramework": {
-      "commandName": "Project",
-      "commandLineArgs": "chrome dev"
-    }
-  }
-}
