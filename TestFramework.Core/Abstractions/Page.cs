@@ -10,36 +10,31 @@ namespace TestFramework.Core.Abstractions
         private string _url;
         public string PageUrl
         {
-            get {
+            get
+            {
                 return _url;
             }
-            set {
+            set
+            {
                 if (string.IsNullOrEmpty(_url))
                     _url = value;
             }
         }
         protected IWebDriver _driver;
 
-        //public virtual void ScrollToElement(IWebDriver driver, IWebElement element, int startScroll = 100)
-        //{
-        //    try
-        //    {
-        //        Actions actions = new Actions(driver);
-        //        actions.MoveToElement(element);
-        //        actions.Perform();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ((IJavaScriptExecutor)_driver).ExecuteScript($"scroll(0,{startScroll});");
-        //        this.ScrollToElement(driver, element, startScroll + _incrementScrollHeight);
-        //    }
-        //}
-
-        public virtual void ScrollToElement(IWebDriver driver, IWebElement element)
+        public virtual void ScrollToElement(IWebDriver driver, IWebElement element, int startScroll = 100)
         {
-            Actions actions = new Actions(driver);
-            actions.MoveToElement(element);
-            actions.Perform();
+            try
+            {
+                Actions actions = new Actions(driver);
+                actions.MoveToElement(element);
+                actions.Perform();
+            }
+            catch (Exception ex)
+            {
+                ((IJavaScriptExecutor)_driver).ExecuteScript($"scroll(0,{startScroll});");
+                this.ScrollToElement(driver, element, startScroll + _incrementScrollHeight);
+            }
         }
     }
 }

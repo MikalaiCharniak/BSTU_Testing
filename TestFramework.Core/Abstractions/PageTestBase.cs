@@ -17,7 +17,7 @@ namespace TestFramework.Core.Abstractions
                 //TODO: clean and add here more logic
                 var screenshot = DriverInstance.GetInstance().TakeScreenshot();
                 var filePath = AppDomain.CurrentDomain.BaseDirectory;
-                screenshot.SaveAsFile($"{filePath}{action.Method.Name}.png");
+                screenshot.SaveAsFile($"{filePath}Name.png");
                 // This would be a good place to log the exception message and
                 // save together with the screenshot
             }
