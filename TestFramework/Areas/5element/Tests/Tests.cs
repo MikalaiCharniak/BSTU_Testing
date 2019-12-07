@@ -3,11 +3,12 @@ using NUnit.Framework;
 using System.IO;
 using System.Threading;
 using TestFramework.Areas._5element.Steps;
+using TestFramework.Core.Abstractions;
 using TestFramework.Core.Settings;
 
 namespace TestFramework.Tests.Source
 {
-    public class Tests
+    public class Tests : PageTestBase
     {
         private IConfiguration _configuration;
         private int _exptectedProductForCompare;
@@ -23,17 +24,20 @@ namespace TestFramework.Tests.Source
         [Test]
         public void CheckComparisonProduct()
         {
-            var homePage = Steps.GetAndOpenHomePage();
-            homePage.GoToPage();
-            var laptopSectionPage = homePage.GoToLaptopSectionPage();
-            laptopSectionPage.AddLaptopsToCompare(_exptectedProductForCompare);
-            laptopSectionPage.OpenCompareWindow();
-            Thread.Sleep(1000);
-            var compareWindow = Steps.GetAndOpenComparePage();
-            Thread.Sleep(1000);
-            var result = compareWindow.CheckNumberOfComporasionProducts(_exptectedProductForCompare);
-            Assert.IsTrue(result);
-            TestContext.AddTestAttachment(Path.GetTempFileName());
+            UITest(() =>
+            {
+                var homePage = Steps.GetAndOpenHomePage();
+                homePage.GoToPage();
+                var laptopSectionPage = homePage.GoToLaptopSectionPage();
+                laptopSectionPage.AddLaptopsToCompare(_exptectedProductForCompare);
+                laptopSectionPage.OpenCompareWindow();
+                Thread.Sleep(1000);
+                var compareWindow = Steps.GetAndOpenComparePage();
+                Thread.Sleep(1000);
+                var result = compareWindow.CheckNumberOfComporasionProducts(_exptectedProductForCompare);
+                Assert.IsTrue(result);
+                TestContext.AddTestAttachment(Path.GetTempFileName());
+            });
         }
     }
 }
