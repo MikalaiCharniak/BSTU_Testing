@@ -17,6 +17,7 @@ namespace TestFramework
             //TODO: expire with docs https://github.com/nunit/docs/wiki/Console-Command-Line
             string[] test = new string[] { "--test:TestFramework.Tests.Source.Tests.CheckComparisonProduct" };
             testRunner.Execute(test);
+            
         }
     }
 }
