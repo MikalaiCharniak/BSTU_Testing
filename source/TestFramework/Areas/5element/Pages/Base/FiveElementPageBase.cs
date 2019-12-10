@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using OpenQA.Selenium;
+using System.Threading;
 using TestFramework.Core.Abstractions;
 
 namespace TestFramework.Areas._5element.Pages.Base
